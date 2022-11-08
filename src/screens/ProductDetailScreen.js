@@ -190,8 +190,8 @@ function ProductDetailScreen() {
                 </div>
             </div>
 
-            <section>
-                <div className='mt-16'>
+            <section className='mt-16 p-5 text-left lg:p-0'>
+                <div>
                     <h1 className='text-gray-900 text-xl font-bold text-left'>Recommended for you</h1>
                 </div>
                 <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
