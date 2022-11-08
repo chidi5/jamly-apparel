@@ -190,7 +190,7 @@ function ProductDetailScreen() {
                 </div>
             </div>
 
-            <section className='mt-16 p-5 text-left lg:p-0'>
+            <section className='mt-14 p-5 text-left lg:p-0'>
                 <div>
                     <h1 className='text-gray-900 text-xl font-bold text-left'>Recommended for you</h1>
                 </div>
