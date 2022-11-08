@@ -14,7 +14,7 @@ import {
   Squares2X2Icon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Cart from '../partials/cart'
 
 function Header() {
@@ -69,6 +69,7 @@ function Header() {
     ]
 
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <>
@@ -192,16 +193,19 @@ function Header() {
                                 ))}
                             </div>
                             <div>
-                                <Link to="/register"
+                                <Popover.Button
+                                onClick={() => navigate("/register")}
                                 className="flex w-full items-center justify-center border border-transparent bg-transparent ring-1 ring-gray-900 px-4 py-2 text-base font-light text-gray-900 hover:bg-gray-900 hover:text-white hover:ring-gray-900"
                                 >
                                     Sign up
-                                </Link>
+                                </Popover.Button>
                                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                                 Existing customer?{' '}
-                                <Link to="/login" className="text-indigo-600 hover:text-indigo-500">
+                                <Popover.Button
+                                onClick={() => navigate("/login")}
+                                className="text-indigo-600 hover:text-indigo-500">
                                     Sign in
-                                </Link>
+                                </Popover.Button>
                                 </p>
                             </div>
                         </div>

@@ -31,9 +31,9 @@ function RegisterScreen() {
                             </p>
                         </div>
                         <div className='flex flex-col'>
-                            <input type="email" className='text-sm text-gray-700 px-4 py-3 w-full my-2 border-0 ring-1 ring-gray-600 focus:outline-0 focus:ring-1 focus:ring-gray-800' placeholder="Email" required />
-                            <input type="password" className='text-sm text-gray-700 px-4 py-3 w-full my-2 border-0 ring-1 ring-gray-600 focus:outline-0 focus:ring-1 focus:ring-gray-800' placeholder="Password" required />
-                            <input type="password" className='text-sm text-gray-700 px-4 py-3 w-full my-2 border-0 ring-1 ring-gray-600 focus:outline-0 focus:ring-1 focus:ring-gray-800' placeholder="Confirm Password" required />
+                            <input type="email" className='text-sm text-gray-700 px-4 py-3 w-full my-2 rounded-none border border-gray-900 ring-1 ring-gray-600 focus:outline-0 focus:ring-1 focus:ring-gray-800' placeholder="Email" required />
+                            <input type="password" className='text-sm text-gray-700 px-4 py-3 w-full my-2 rounded-none border border-gray-900 ring-1 ring-gray-600 focus:outline-0 focus:ring-1 focus:ring-gray-800' placeholder="Password" required />
+                            <input type="password" className='text-sm text-gray-700 px-4 py-3 w-full my-2 rounded-none border border-gray-900 ring-1 ring-gray-600 focus:outline-0 focus:ring-1 focus:ring-gray-800' placeholder="Confirm Password" required />
                             <button
                                 type='submit'
                                 className="flex w-full items-center justify-center px-4 py-3 my-5 text-xs font-light border border-transparent bg-gray-900 ring-1 ring-gray-900 text-white hover:bg-gray-800"
