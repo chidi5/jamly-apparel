@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import one from '../style/static/images/1.jpeg';
 import two from '../style/static/images/2.jpeg';
 import three from '../style/static/images/3.jpeg';
@@ -9,12 +9,11 @@ import {
     Accordion,
     AccordionHeader,
     AccordionBody,
-    Typography,
 } from "@material-tailwind/react";
 
 function ProductDetailScreen() {
 
-    const { id } = useParams();
+    //const { id } = useParams();
     const [selectedOption, setSelectedOption] = useState('42');
     const [qty, setQty] = useState(1);
     //const [isActive, setIsActive] = useState(false);

@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -78,7 +78,7 @@ export default function Cart({
 
                                             <div className="mt-8">
                                                 <div className="flow-root">
-                                                    <ul role="list" className="-my-6 divide-y divide-gray-200">
+                                                    <ul className="-my-6 divide-y divide-gray-200">
                                                         {products.map((product) => (
                                                         <li key={product.id} className="flex py-6">
                                                             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -128,7 +128,7 @@ export default function Cart({
                                             <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                             <div className="mt-6">
                                                 <a
-                                                href="#"
+                                                href="/"
                                                 className="flex w-full items-center justify-center px-4 py-3 my-5 text-sm font-light border border-transparent bg-gray-900 ring-1 ring-gray-900 text-white hover:bg-gray-800"
                                                 >
                                                 Checkout
