@@ -4,7 +4,6 @@ import one from '../style/static/images/1.jpeg';
 import two from '../style/static/images/2.jpeg';
 import three from '../style/static/images/3.jpeg';
 import four from '../style/static/images/4.jpeg';
-import ProductContainer from './ProductContainer';
 import {
     Accordion,
     AccordionHeader,
@@ -190,60 +189,59 @@ function ProductDetailScreen() {
                     </>
                 </div>
             </div>
-        </div>
-        <ProductContainer>
+
             <section>
-            <div className='mt-8'>
-                <h1 className='text-gray-900 text-lg font-bold text-left'>Recommended for you</h1>
-            </div>
-            <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
-                <div className='flex flex-col'>
-                <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
-                    <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={one} alt='product'></img>
-                    </div>
-                    <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
-                    <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
-                    <span>$180</span>
-                    </div>
-                </Link>
+                <div className='mt-16'>
+                    <h1 className='text-gray-900 text-xl font-bold text-left'>Recommended for you</h1>
                 </div>
-                <div className='flex flex-col'>
-                <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
-                    <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={two} alt='product'></img>
+                <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
+                    <div className='flex flex-col'>
+                    <Link to='/product/outpost-canvas-jacket-tobacco'>
+                        <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
+                        <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={one} alt='product'></img>
+                        </div>
+                        <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
+                        <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
+                        <span>$180</span>
+                        </div>
+                    </Link>
                     </div>
-                    <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
-                    <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
-                    <span>$180</span>
+                    <div className='flex flex-col'>
+                    <Link to='/product/outpost-canvas-jacket-tobacco'>
+                        <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
+                        <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={two} alt='product'></img>
+                        </div>
+                        <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
+                        <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
+                        <span>$180</span>
+                        </div>
+                    </Link>
                     </div>
-                </Link>
+                    <div className='flex flex-col'>
+                    <Link to='/product/outpost-canvas-jacket-tobacco'>
+                        <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
+                        <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={three} alt='product'></img>
+                        </div>
+                        <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
+                        <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
+                        <span>$180</span>
+                        </div>
+                    </Link>
+                    </div>
+                    <div className='flex flex-col'>
+                    <Link to='/product/outpost-canvas-jacket-tobacco'>
+                        <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
+                        <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={four} alt='product'></img>
+                        </div>
+                        <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
+                        <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
+                        <span>$180</span>
+                        </div>
+                    </Link>
+                    </div>
                 </div>
-                <div className='flex flex-col'>
-                <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
-                    <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={three} alt='product'></img>
-                    </div>
-                    <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
-                    <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
-                    <span>$180</span>
-                    </div>
-                </Link>
-                </div>
-                <div className='flex flex-col'>
-                <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
-                    <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={four} alt='product'></img>
-                    </div>
-                    <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
-                    <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
-                    <span>$180</span>
-                    </div>
-                </Link>
-                </div>
-            </div>
             </section>
-        </ProductContainer>
+        </div>
         </>
     )
 }

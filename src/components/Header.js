@@ -93,7 +93,7 @@ function Header() {
 
                     <div className="flex items-center justify-center">
                         <Link to="/">
-                            <span className="sr-only">Your Company</span>
+                            <span className="sr-only">DerekMano</span>
                             <img
                                 className="h-8 w-auto sm:h-10"
                                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -103,10 +103,13 @@ function Header() {
                     </div>
 
                     <div className="-my-2 -mr-2 lg:hidden">
-                        <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-900 hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-0">
+                        <button 
+                            onClick={() => setOpen(!open)}
+                            className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-900 hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-0"
+                        >
                             <span className="sr-only">Cart menu</span>
                             <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                        </Popover.Button>
+                        </button>
                     </div>
 
                     <div className="hidden items-center justify-end space-x-8 lg:flex">
@@ -189,16 +192,16 @@ function Header() {
                                 ))}
                             </div>
                             <div>
-                                <a href="#"
+                                <Link to="/register"
                                 className="flex w-full items-center justify-center border border-transparent bg-transparent ring-1 ring-gray-900 px-4 py-2 text-base font-light text-gray-900 hover:bg-gray-900 hover:text-white hover:ring-gray-900"
                                 >
                                     Sign up
-                                </a>
+                                </Link>
                                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                                 Existing customer?{' '}
-                                <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                                <Link to="/login" className="text-indigo-600 hover:text-indigo-500">
                                     Sign in
-                                </a>
+                                </Link>
                                 </p>
                             </div>
                         </div>
