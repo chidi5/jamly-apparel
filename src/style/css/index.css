@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "GT Pressura Mono";
+  src: url("../font/GT-Pressura-Mono.eot");
+  src: url("../font/GT-Pressura-Mono.woff") format("woff"),
+  url('../font/GT-Pressura-Mono.otf') format("opentype");
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "GT Pressura Mono";
+}
+
+.font-body {
+  font-family: "GT Pressura Mono";
+}
+
+.justify-column {
+  flex-direction: column;
+}
+
+.text-sm {
+  font-size: 0.8rem;
+  line-height: 1.25rem;
+}
