@@ -194,7 +194,7 @@ function ProductDetailScreen() {
         <ProductContainer>
             <section>
             <div className='mt-8'>
-                <h1 className='text-gray-900 text-lg font-bold text-left'>New Arrivals</h1>
+                <h1 className='text-gray-900 text-lg font-bold text-left'>Recommended for you</h1>
             </div>
             <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
                 <div className='flex flex-col'>

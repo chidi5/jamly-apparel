@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import header from '../style/static/images/new.jpg';
+import head from '../style/static/images/winter.jpg';
 import one from '../style/static/images/1.jpeg';
 import two from '../style/static/images/2.jpeg';
 import three from '../style/static/images/3.jpeg';
@@ -15,7 +16,8 @@ function HomeScreen() {
         <div className='relative flex flex-col justify-center overflow-hidden'>
           <div className='inline-block'>
             {/* Image of 2000x800 */}
-            <img src={header} className='w-full' alt='shoes header' />
+            <img src={header} className='hidden w-full lg:block' alt='shoes header' />            
+            <img src={head} className='w-full lg:hidden' alt='shoes header' />
           </div>
           <div className='absolute flex justify-center top-0 bottom-0 left-0 right-0 items-center'>
             <div className='w-full max-w-7xl py-0 px-5 m-0 lg:my-0 lg:mx-auto lg:w-[90%]'>
