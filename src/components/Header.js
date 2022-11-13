@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {Fragment, useState} from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { Popover, Transition, Disclosure } from '@headlessui/react'
 import {
   ArrowPathIcon,
   Bars3BottomLeftIcon,
@@ -8,68 +8,33 @@ import {
   CalendarIcon,
   ChartBarIcon,
   CursorArrowRaysIcon,
+  HomeModernIcon,
   LifebuoyIcon,
   ShieldCheckIcon,
+  ShoppingBagIcon,
   ShoppingCartIcon,
   Squares2X2Icon,
+  UserIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
+import { ChevronUpIcon } from '@heroicons/react/20/solid'
 import { Link, useNavigate } from 'react-router-dom'
 import Cart from '../partials/cart'
+import Avater from '../partials/avater'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../actions/user'
 
 function Header() {
-
-    const solutions = [
-        {
-          name: 'Analytics',
-          description: 'Get a better understanding of where your traffic is coming from.',
-          href: '#',
-          icon: ChartBarIcon,
-        },
-        {
-          name: 'Engagement',
-          description: 'Speak directly to your customers in a more meaningful way.',
-          href: '#',
-          icon: CursorArrowRaysIcon,
-        },
-        { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
-        {
-          name: 'Integrations',
-          description: "Connect with third-party tools that you're already using.",
-          href: '#',
-          icon: Squares2X2Icon,
-        },
-        {
-          name: 'Automations',
-          description: 'Build strategic funnels that will drive your customers to convert',
-          href: '#',
-          icon: ArrowPathIcon,
-        },
-    ]
-    const resources = [
-        {
-          name: 'Help Center',
-          description: 'Get all of your questions answered in our forums or contact support.',
-          href: '#',
-          icon: LifebuoyIcon,
-        },
-        {
-          name: 'Guides',
-          description: 'Learn how to maximize our platform to get the most out of it.',
-          href: '#',
-          icon: BookmarkSquareIcon,
-        },
-        {
-          name: 'Events',
-          description: 'See what meet-ups and other events we might be planning near you.',
-          href: '#',
-          icon: CalendarIcon,
-        },
-        { name: 'Security', description: 'Understand how we take your privacy seriously.', href: '#', icon: ShieldCheckIcon },
-    ]
-
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
 
     return (
         <>
@@ -117,15 +82,19 @@ function Header() {
                         <a href="#" className="whitespace-nowrap text-sm font-thin text-gray-500 hover:text-gray-900">
                             Search
                         </a>
-                        <Link to="/login" className="whitespace-nowrap text-sm font-thin text-gray-500 hover:text-gray-900">
-                            Account
-                        </Link>
-                        <a href="#"
+                        {userInfo ?
+                            <Avater />
+                            :
+                            <Link to="/login" className="whitespace-nowrap text-sm font-thin text-gray-500 hover:text-gray-900">
+                                Login
+                            </Link>
+                        }
+                        <button
                             className="whitespace-nowrap text-sm font-thin text-gray-500 hover:text-gray-900"
                             onClick={() => setOpen(!open)}
                         >
                             Cart (0)
-                        </a>
+                        </button>
                         <Cart open={open} setOpen={setOpen} />
                     </div>
                 </div>
@@ -160,59 +129,145 @@ function Header() {
                             </div>
                             <div className="mt-6">
                                 <nav className="grid gap-y-8">
-                                {solutions.map((item) => (
-                                    <a
-                                    key={item.name}
-                                    href={item.href}
-                                    className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
-                                    >
-                                    <item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
-                                    <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
-                                    </a>
-                                ))}
+                                    <Link
+                                        to='/'
+                                        className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-50"
+                                        >
+                                        <HomeModernIcon className="h-6 w-6 flex-shrink-0 text-gray-600" aria-hidden="true" />
+                                        <span className="ml-3 text-base font-medium text-gray-900">Home</span>
+                                    </Link>
+                                    <Link
+                                        to='/'
+                                        className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-50"
+                                        >
+                                        <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-gray-600" aria-hidden="true" />
+                                        <span className="ml-3 text-base font-medium text-gray-900">Shop Now</span>
+                                    </Link>
+                                    <Disclosure>
+                                    {({ open }) => (
+                                        <>
+                                        <Disclosure.Button className="flex w-full -m-3 items-center justify-between rounded-none p-3 hover:bg-gray-50 text-left focus:outline-none">
+                                            <span className="text-base font-medium text-gray-900 flex flex-row">
+                                                <Squares2X2Icon className="h-6 w-6 flex-shrink-0 text-gray-600 mr-3" aria-hidden="true" />
+                                                Collections
+                                            </span>
+                                            <ChevronUpIcon
+                                            className={`${
+                                                open ? 'rotate-180 transform' : ''
+                                            } h-5 w-5 text-gray-600`}
+                                            />
+                                        </Disclosure.Button>
+                                        <Disclosure.Panel className="px-4 pt-4 pb-2 text-gray-800 bg-gray-50">
+                                            <nav className="grid gap-y-8">
+                                                <Link
+                                                    to='/'
+                                                    className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
+                                                    >
+                                                    <span className="ml-3 text-base font-medium text-gray-900">Summer Collection</span>
+                                                </Link>
+                                                <Link
+                                                    to='/'
+                                                    className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
+                                                    >
+                                                    <span className="ml-3 text-base font-medium text-gray-900">Sports Collection</span>
+                                                </Link>
+                                                <Link
+                                                    to='/'
+                                                    className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
+                                                    >
+                                                    <span className="ml-3 text-base font-medium text-gray-900">Lifestyle Collection</span>
+                                                </Link>
+                                            </nav>
+                                        </Disclosure.Panel>
+                                        </>
+                                    )}
+                                    </Disclosure>
+                                    {userInfo &&
+                                        <Disclosure>
+                                        {({ open }) => (
+                                            <>
+                                            <Disclosure.Button className="flex w-full -m-3 items-center justify-between rounded-none p-3 hover:bg-gray-50 text-left focus:outline-none">
+                                                <span className="text-base font-medium text-gray-900 flex flex-row">
+                                                    <UserIcon className="h-6 w-6 flex-shrink-0 text-gray-600 mr-3" aria-hidden="true" />
+                                                    Account
+                                                </span>
+                                                <ChevronUpIcon
+                                                className={`${
+                                                    open ? 'rotate-180 transform' : ''
+                                                } h-5 w-5 text-gray-600`}
+                                                />
+                                            </Disclosure.Button>
+                                            <Disclosure.Panel className="px-4 pt-4 pb-2 text-gray-800 bg-gray-50">
+                                                <nav className="grid gap-y-8">
+                                                    <Link
+                                                        to='/'
+                                                        className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
+                                                        >
+                                                        <span className="ml-3 text-base font-medium text-gray-900">Account Settings</span>
+                                                    </Link>
+                                                    <Link
+                                                        to='/'
+                                                        className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
+                                                        >
+                                                        <span className="ml-3 text-base font-medium text-gray-900">My Profile</span>
+                                                    </Link>
+                                                    <Link
+                                                        to='/'
+                                                        className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
+                                                        >
+                                                        <span className="ml-3 text-base font-medium text-gray-900">My Orders</span>
+                                                    </Link>
+                                                </nav>
+                                            </Disclosure.Panel>
+                                            </>
+                                        )}
+                                        </Disclosure>
+                                    }
                                 </nav>
                             </div>
                         </div>
                         <div className="space-y-6 py-6 px-5">
                             <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                                <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                Pricing
-                                </a>
+                                <Link to="/" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                                    Returns Policy
+                                </Link>
 
-                                <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                Docs
-                                </a>
-                                {resources.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                                >
-                                    {item.name}
-                                </a>
-                                ))}
+                                <Link to="/" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                                    Terms & Conditions
+                                </Link>
                             </div>
-                            <div>
-                                <Popover.Button
-                                onClick={() => navigate("/register")}
-                                className="flex w-full items-center justify-center border border-transparent bg-transparent ring-1 ring-gray-900 px-4 py-2 text-base font-light text-gray-900 hover:bg-gray-900 hover:text-white hover:ring-gray-900"
-                                >
-                                    Sign up
-                                </Popover.Button>
-                                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                                Existing customer?{' '}
-                                <Popover.Button
-                                onClick={() => navigate("/login")}
-                                className="text-indigo-600 hover:text-indigo-500">
-                                    Sign in
-                                </Popover.Button>
-                                </p>
-                            </div>
+                            {userInfo ?
+                                <div className='flex items-center justify-center'>
+                                    <Popover.Button
+                                        onClick={logoutHandler}
+                                        className="flex items-center justify-center px-4 py-2 my-5 text-sm font-light border border-transparent bg-gray-900 ring-1 ring-gray-900 text-white hover:bg-gray-800">
+                                            Sign out
+                                    </Popover.Button>
+                                </div>
+                                :
+                                <div>
+                                    <Popover.Button
+                                    onClick={() => navigate("/register")}
+                                    className="flex w-full items-center justify-center border border-transparent bg-transparent ring-1 ring-gray-900 px-4 py-2 text-base font-light text-gray-900 hover:bg-gray-900 hover:text-white hover:ring-gray-900"
+                                    >
+                                        Sign up
+                                    </Popover.Button>
+                                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                                    Existing customer?{' '}
+                                    <Popover.Button
+                                    onClick={() => navigate("/login")}
+                                    className="text-gray-900 hover:text-gray-800">
+                                        Sign in
+                                    </Popover.Button>
+                                    </p>
+                                </div>
+                            }
                         </div>
                     </div>
                 </Popover.Panel>
             </Transition>
         </Popover>
+
         <Popover className="hidden relative w-full bg-primary-100 lg:block">
             <div className="mx-auto max-w-[84rem] px-4 sm:px-6">
                 <div className="flex items-center justify-between border-0 py-2.5">

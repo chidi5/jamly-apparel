@@ -45,16 +45,16 @@ function Footer() {
             <div className='w-1/2 pl-4 lg:pl-0 text-left'>
               <h2 className=" text-[13px] mb-[10px] font-semibold text-left">Info</h2>
               <p>
-                <a href="/" className='text-[11px] mt-0 text-gray-500 font-light text-left'>Facebook</a>
+                <a href="/" className='text-[13px] mt-0 text-gray-500 font-light text-left'>Facebook</a>
               </p>
               <p>
-                <a href="/" className='text-[11px] mt-0 text-gray-500 font-light text-left'>Instagram</a>
+                <a href="/" className='text-[13px] mt-0 text-gray-500 font-light text-left'>Instagram</a>
               </p>
               <p>
-                <a href="/" className='text-[11px] mt-0 text-gray-500 font-light text-left'>YouTube</a>
+                <a href="/" className='text-[13px] mt-0 text-gray-500 font-light text-left'>YouTube</a>
               </p>
               <p>
-                <a href="/" className='text-[11px] mt-0 text-gray-500 font-light text-left'>Twitter</a>
+                <a href="/" className='text-[13px] mt-0 text-gray-500 font-light text-left'>Twitter</a>
               </p>
             </div>
           </div>
