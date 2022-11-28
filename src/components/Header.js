@@ -113,7 +113,7 @@ function Header() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
             >
-                <Popover.Panel focus className="relative inset-x-0 -top-16 origin-top-right transform p-0 transition z-10 overflow-auto h-full lg:hidden">
+                <Popover.Panel focus className="relative inset-x-0 -top-20 origin-top-right transform p-0 transition z-10 overflow-auto h-full lg:hidden">
                     <div className="divide-y-2 divide-gray-50 bg-white ring-1 ring-black ring-opacity-5">
                         <div className="px-5 pt-5 pb-6">
                             <div className="flex items-center justify-between">
@@ -125,9 +125,9 @@ function Header() {
                                 </div>
                                 <div>
                                     <img
-                                        className="h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                        alt="Your Company"
+                                        className="h-16 w-auto"
+                                        src={logo}
+                                        alt="21 bespoke"
                                     />
                                 </div>
                             </div>
