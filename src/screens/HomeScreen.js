@@ -84,7 +84,7 @@ function HomeScreen() {
               <div className='scroll_container flex my-8 gap-x-2 overflow-x-auto overflow-y-hidden snap-x'>
                 <div className='flex flex-col relative snap-start'>
                   <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[716px] md:h-[716px] w-[356px] h-[356px]'>
+                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
                       <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={summer} alt='product'></img>
                     </div>
                     <h3 className='flex text-base text-left font-semibold my-2'>
@@ -97,7 +97,7 @@ function HomeScreen() {
                 </div>
                 <div className='flex flex-col relative snap-start'>
                   <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[716px] md:h-[716px] w-[356px] h-[356px]'>
+                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
                       <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={one} alt='product'></img>
                     </div>
                     <h3 className='flex text-base text-left font-semibold my-2'>
@@ -110,7 +110,7 @@ function HomeScreen() {
                 </div>
                 <div className='flex flex-col relative snap-start'>
                   <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[716px] md:h-[716px] w-[356px] h-[356px]'>
+                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
                       <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={two} alt='product'></img>
                     </div>
                     <h3 className='flex text-base text-left font-semibold my-2'>
@@ -123,7 +123,7 @@ function HomeScreen() {
                 </div>
                 <div className='flex flex-col relative snap-start'>
                   <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[716px] md:h-[716px] w-[356px] h-[356px]'>
+                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
                       <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={three} alt='product'></img>
                     </div>
                     <h3 className='flex text-base text-left font-semibold my-2'>
