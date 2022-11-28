@@ -1,11 +1,23 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <div className='flex'>
+    <div className='flex bottom-0 left-0 w-full'>
       <footer className='bg-primary-100 w-full pt-8'>
         <div className='flex w-full m-auto py-0 flex-col px-4 sm:px-6 lg:px-8 lg:flex-row lg:justify-between'>
-          <div className='w-full lg:w-[35%]'>a</div>
+          <div className='w-full lg:w-[30%]'>
+            <div className='mb-5 flex justify-center md:justify-start'>
+              <Link to="/">
+                <span className="sr-only">21 Bespoke</span>
+                  <img
+                    className="w-auto h-14"
+                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    alt="store name"
+                  />
+              </Link>
+            </div>
+          </div>
           <div className='w-full lg:w-[35%]'>
             <div className='mb-5 text-left'>
               <h2 className=" text-[13px] mb-[10px] font-semibold">10% Off Your First Order</h2>

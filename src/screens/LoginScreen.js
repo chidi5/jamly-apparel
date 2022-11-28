@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { login } from '../actions/user'
+import Loader from '../components/Loader'
 import ScreenContainer from './ScreenContainer'
 
 function LoginScreen() {
@@ -30,6 +31,9 @@ function LoginScreen() {
 
     return (
         <ScreenContainer>
+            {loading ?
+            <Loader />
+            :
             <form className='lg:max-w-2xl lg:my-0 lg:mx-auto' onSubmit={submitHandler}>
                 <div className='text-center mb-8'>
                     <h1 className='text-gray-900 text-2xl font-bold'>Sign in to your {`{store}`} account</h1>
@@ -72,6 +76,7 @@ function LoginScreen() {
                     <Link to='#' className='underline text-gray-600 text-xs font-thin text-left'>Can't remember password?</Link>
                 </div>
             </form>
+            }
         </ScreenContainer>
     )
 }

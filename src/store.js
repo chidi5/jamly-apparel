@@ -1,4 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { applyMiddleware, configureStore, createStore } from '@reduxjs/toolkit'
+import { composeWithDevTools } from '@redux-devtools/extension'
+import thunk from 'redux-thunk'
 import reducer from './reducers'
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ?
@@ -11,7 +13,7 @@ const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ?
     JSON.parse(localStorage.getItem('shippingAddress')) : {}
 
 
-const initialState = {
+const preloadedState = {
     cart: {
         cartItems: cartItemsFromStorage,
         shippingAddress: shippingAddressFromStorage,
@@ -19,9 +21,15 @@ const initialState = {
     userLogin: { userInfo: userInfoFromStorage },
 }
 
-const store = configureStore({
-  reducer,
-  initialState
-})
+const middleware = [thunk]
+
+//const store = configureStore({
+    //reducer,
+    //preloadedState,
+    //middleware,
+//})
+
+const store = createStore(reducer, preloadedState,
+    composeWithDevTools(applyMiddleware(...middleware)))
 
 export default store

@@ -7,11 +7,21 @@ import {
 } from './types'
 
 
-export const loadStore = (name) => async (dispatch) => {
+export const loadStore = (domain) => async (dispatch) => {
     try {
         dispatch({ type: STORE_REQUEST })
 
-        const { data } = await axios.get(`https://jamly2021.herokuapp.com/api/loadstorefront/${name}`)
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.post(
+            'https://getjamly.herokuapp.com/api/loadstorefront',
+            { "store_domain": domain },
+            config
+        )
 
         dispatch({
             type: STORE_SUCCESS,

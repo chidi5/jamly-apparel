@@ -116,6 +116,15 @@ input[type='number']::-webkit-outer-spin-button {
   outline: none !important;
 }
 
+.scroll_container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll_container::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
   select,
   textarea,

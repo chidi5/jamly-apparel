@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import ScreenContainer from './ScreenContainer'
 import { register } from '../actions/user';
 import Message from '../components/Message';
+import Loader from '../components/Loader'
 import { useDispatch, useSelector } from 'react-redux';
 
 function RegisterScreen() {
@@ -21,8 +22,8 @@ function RegisterScreen() {
 
     const redirect = search ? search.split('=')[1] : '/'
 
-    const userLogin = useSelector(state => state.userLogin)
-    const { error, loading, userInfo } = userLogin
+    const userRegister = useSelector(state => state.userRegister)
+    const { error, loading, userInfo } = userRegister
 
     useEffect(() => {
         if (userInfo) {
@@ -43,6 +44,9 @@ function RegisterScreen() {
     return (
         <div>
             {message && <Message variant='red'>{message}</Message>}
+            {loading ?
+            <Loader />
+            :
             <div className='grid lg:grid-cols-2'>
                 <div className='bg-gray-50 hidden lg:flex lg:flex-col justify-center items-center text-center'>
                     <ScreenContainer>
@@ -133,6 +137,7 @@ function RegisterScreen() {
                     </ScreenContainer>
                 </div>
             </div>
+            }
         </div>
     )
 }
