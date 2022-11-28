@@ -6,6 +6,10 @@ import {
     userUpdateProfileReducer,
 } from './user'
 import { storeFrontReducer } from './storefront'
+import { 
+    productListReducer,
+    productDetailsReducer
+} from './product'
 
 export default combineReducers({
     userLogin: userLoginReducer,
@@ -13,4 +17,6 @@ export default combineReducers({
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
     storeFront: storeFrontReducer,
+    productList: productListReducer,
+    productDetails: productDetailsReducer,
 })

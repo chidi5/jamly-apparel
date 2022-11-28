@@ -7,28 +7,18 @@ import two from '../style/static/images/2.jpeg';
 import three from '../style/static/images/3.jpeg';
 import four from '../style/static/images/4.jpeg';
 import summer from '../style/static/images/sum.jpg';
-import ScreenContainer from './ScreenContainer';
 import ProductContainer from './ProductContainer'
 import { useDispatch, useSelector } from 'react-redux';
-import { loadStore } from '../actions/storefront';
-import { ArrowLeftIcon, ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Loader from '../components/Loader';
+import Product from '../components/Product';
 
 function HomeScreen() {
-  // window.location.href
-  const [domain, setDomain] = useState('https://jamrel.netlify.app/');
 
   const dispatch = useDispatch()
 
   const storeFront = useSelector(state => state.storeFront)
   const { error, loading, store } = storeFront
-
-  useEffect(() => {
-    dispatch(loadStore(domain))
-    if(store){
-      console.log(store.store_data)
-    }
-  }, [dispatch, domain])
 
   return (
     <>
@@ -59,16 +49,8 @@ function HomeScreen() {
             </div>
             <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
               {store.most_trending.map(trend => (
-                <div className='flex flex-col'>
-                  <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='group relative overflow-hidden mb-4 pt-[125%]'>
-                      <img className='absolute w-full h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-200 ease-in-out' src={trend.image1} alt={trend.name}></img>
-                    </div>
-                    <h3 className='text-xs text-left'>{trend.name}</h3>
-                    <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
-                      <span>&#8358;{trend.price}</span>
-                    </div>
-                  </Link>
+                <div key={trend._id} className='flex flex-col'>
+                  <Product product={trend}/>
                 </div>
               ))}
             </div>

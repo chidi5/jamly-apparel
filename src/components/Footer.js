@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../style/static/images/logo.png';
 
 function Footer() {
   return (
@@ -11,8 +12,8 @@ function Footer() {
               <Link to="/">
                 <span className="sr-only">21 Bespoke</span>
                   <img
-                    className="w-auto h-14"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    className="w-auto h-40"
+                    src={logo}
                     alt="store name"
                   />
               </Link>

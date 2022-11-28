@@ -1,16 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {Fragment, useState} from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
 import { Popover, Transition, Disclosure } from '@headlessui/react'
 import {
-  ArrowPathIcon,
   Bars3BottomLeftIcon,
-  BookmarkSquareIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  CursorArrowRaysIcon,
   HomeModernIcon,
-  LifebuoyIcon,
-  ShieldCheckIcon,
   ShoppingBagIcon,
   ShoppingCartIcon,
   Squares2X2Icon,
@@ -18,29 +11,40 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
+import logo from '../style/static/images/logo.png';
 import { Link, useNavigate } from 'react-router-dom'
 import Cart from '../partials/cart'
 import Avater from '../partials/avater'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/user'
+import { loadStore } from '../actions/storefront'
 
 function Header() {
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    // window.location.href
+    const [domain, setDomain] = useState('https://jamrel.netlify.app/');
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
+
+    const storeFront = useSelector(state => state.storeFront)
+    const { store } = storeFront
 
     const logoutHandler = () => {
         dispatch(logout())
     }
 
+    useEffect(() => {
+        dispatch(loadStore(domain))
+    }, [dispatch, domain])
+
     return (
         <>
         <Popover className="sticky top-0 z-10 bg-white border border-primary-100">
             <div className="mx-auto max-w-[84rem] px-4 sm:px-6">
-                <div className="flex items-center justify-between border-0 py-4">
+                <div className="flex items-center justify-between border-0 py-1">
                     <Popover.Group as="nav" className="hidden space-x-8 lg:flex lg:justify-start">
                         <a href="#" className="text-sm font-thin text-gray-500 hover:text-gray-900">
                             Men
@@ -59,10 +63,10 @@ function Header() {
 
                     <div className="flex items-center justify-center">
                         <Link to="/">
-                            <span className="sr-only">DerekMano</span>
+                            <span className="sr-only">21 Bespoke</span>
                             <img
-                                className="h-8 w-auto sm:h-10"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                className="h-20 w-auto lg:h-20"
+                                src={logo}
                                 alt="store name"
                             />
                         </Link>
@@ -109,7 +113,7 @@ function Header() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
             >
-                <Popover.Panel focus className="relative inset-x-0 -top-16 origin-top-right transform p-2 transition z-10 overflow-auto h-full lg:hidden">
+                <Popover.Panel focus className="relative inset-x-0 -top-16 origin-top-right transform p-0 transition z-10 overflow-auto h-full lg:hidden">
                     <div className="divide-y-2 divide-gray-50 bg-white ring-1 ring-black ring-opacity-5">
                         <div className="px-5 pt-5 pb-6">
                             <div className="flex items-center justify-between">
@@ -137,7 +141,7 @@ function Header() {
                                         <span className="ml-3 text-base font-medium text-gray-900">Home</span>
                                     </Link>
                                     <Link
-                                        to='/'
+                                        to='/product/all'
                                         className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-50"
                                         >
                                         <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-gray-600" aria-hidden="true" />
@@ -272,6 +276,9 @@ function Header() {
             <div className="mx-auto max-w-[84rem] px-4 sm:px-6">
                 <div className="flex items-center justify-between border-0 py-2.5">
                     <Popover.Group as="nav" className="hidden space-x-6 lg:flex lg:justify-start">
+                        <Link to="/product/all" className="text-sm font-thin text-gray-500 hover:text-gray-900">
+                            Shop Now
+                        </Link>
                         <Link to="/t-shirt" className="text-sm font-thin text-gray-500 hover:text-gray-900">
                             T-shirt
                         </Link>

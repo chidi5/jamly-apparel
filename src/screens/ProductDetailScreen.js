@@ -129,7 +129,7 @@ function ProductDetailScreen() {
                             </button>
                             <input 
                                 type="number"
-                                className="flex items-center justify-center text-gray-900 outline-none focus:outline-none text-center w-full bg-transparent font-thin text-sm hover:text-black"
+                                className="flex items-center justify-center text-gray-900 outline-none focus:outline-none text-center w-full bg-transparent font-thin text-xs"
                                 name="custom-input-number" value={qty}
                                 onChange={(e) => setQty(e.target.value)}
                             />
@@ -196,15 +196,15 @@ function ProductDetailScreen() {
                 </div>
                 <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
                     <div className='flex flex-col'>
-                    <Link to='/product/outpost-canvas-jacket-tobacco'>
-                        <div className='relative overflow-x-hidden mb-4 pt-[125%]'>
-                        <img className='absolute w-auto h-full top-0 left-1/2 -translate-x-1/2' src={one} alt='product'></img>
-                        </div>
-                        <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
-                        <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
-                        <span>$180</span>
-                        </div>
-                    </Link>
+                        <Link to='/product/s'>
+                            <div className='group relative overflow-hidden mb-4 pt-[125%]'>
+                                <img className='absolute w-full h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-200 ease-in-out' src={one} alt='productname'></img>
+                            </div>
+                            <h3 className='text-xs text-left'>Outpost Canvas Jacket - Tobacco</h3>
+                            <div className="text-xs text-gray-500 uppercase text-left font-thin pt-1">
+                                <span>&#8358;180</span>
+                            </div>
+                        </Link>
                     </div>
                     <div className='flex flex-col'>
                     <Link to='/product/outpost-canvas-jacket-tobacco'>
