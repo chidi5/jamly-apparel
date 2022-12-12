@@ -13,7 +13,7 @@ export const storeFrontReducer = (state = {}, action) => {
             return { loading: false, store: action.payload }
 
         case STORE_FAIL:
-            return { loading: false, error: action.payload }
+            return { loading: true, error: action.payload }
 
         default:
             return state

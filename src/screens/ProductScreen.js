@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { listProducts } from '../actions/product';
+import Load from '../components/Load';
 import Product from '../components/Product';
 import white from '../style/static/images/white.jpg';
 import ProductContainer from './ProductContainer'
@@ -16,7 +17,7 @@ function ProductScreen() {
     const { loading, error, products} = productList
 
     const storeFront = useSelector(state => state.storeFront)
-    const { store } = storeFront
+    const { loading:storeLoading, store } = storeFront
 
     useEffect(() => {
         if(store){
@@ -26,21 +27,25 @@ function ProductScreen() {
     }, [dispatch])
 
     return (
-        <ScreenContainer>
-            {products &&
-            <ProductContainer>
-                <div className='relative flex flex-row-reverse items-center justify-between border-t border-b border-gray-300 min-h-[48px] min-w-[80px]'>
+        <>
+            {loading || storeLoading  ? <Load />
+            :
+            products &&
+            <ScreenContainer>
+                <div className='relative flex flex-row-reverse items-center justify-between border-t border-b border-gray-300 min-h-[48px] min-w-[80px] my-10'>
                 </div>
-                <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
-                    {products.map(product => (
-                        <div key={product._id} className='flex flex-col'>
-                            <Product product={product} />
-                        </div>
-                    ))}
-                </div>
-            </ProductContainer>
+                <ProductContainer>
+                    <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
+                        {products.map(product => (
+                            <div key={product._id} className='flex flex-col'>
+                                <Product product={product} />
+                            </div>
+                        ))}
+                    </div>
+                </ProductContainer>
+            </ScreenContainer>
             }
-        </ScreenContainer>
+        </>
     )
 }
 

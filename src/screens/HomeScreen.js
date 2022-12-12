@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Loader from '../components/Loader';
 import Product from '../components/Product';
+import Load from '../components/Load';
 
 function HomeScreen() {
 
@@ -22,7 +23,7 @@ function HomeScreen() {
 
   return (
     <>
-    {loading ? <Loader />
+    {loading ? <Load />
       : store &&
       <>
         <section>

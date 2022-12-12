@@ -46,7 +46,7 @@ function Header() {
             <div className="mx-auto max-w-[84rem] px-4 sm:px-6">
                 <div className="flex items-center justify-between border-0 py-1">
                     <Popover.Group as="nav" className="hidden space-x-8 lg:flex lg:justify-start">
-                        <a href="#" className="text-sm font-thin text-gray-500 hover:text-gray-900">
+                        <a href="/" className="text-sm font-thin text-gray-500 hover:text-gray-900">
                             Men
                         </a>
                         <a href="#" className="text-sm font-thin text-gray-500 hover:text-gray-900">
