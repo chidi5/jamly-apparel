@@ -24,7 +24,8 @@ function Header() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     // window.location.href
-    const [domain, setDomain] = useState('https://jamrel.netlify.app/');
+    //const [domain, setDomain] = useState('https://jamrel.netlify.app/');
+    const domain = 'https://jamrel.netlify.app/'
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -38,7 +39,11 @@ function Header() {
 
     useEffect(() => {
         dispatch(loadStore(domain))
-    }, [dispatch, domain])
+        // if store not found
+        //if (store === undefined) {
+            //navigate('/checkout')
+        //}
+    }, [dispatch])
 
     return (
         <>

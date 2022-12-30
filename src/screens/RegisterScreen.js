@@ -6,6 +6,7 @@ import { register } from '../actions/user';
 import Message from '../components/Message';
 import Loader from '../components/Loader'
 import { useDispatch, useSelector } from 'react-redux';
+import Layout from '../components/Layout';
 
 function RegisterScreen() {
     const [email, setEmail] = useState('')
@@ -42,7 +43,10 @@ function RegisterScreen() {
     }
 
     return (
-        <div>
+        <Layout
+            showFooter={true}
+            showHeader={true} 
+        >
             {message && <Message variant='red'>{message}</Message>}
             {loading ?
             <Loader />
@@ -74,6 +78,7 @@ function RegisterScreen() {
                             <div className='flex flex-col'>
                                 <input 
                                     type="email"
+                                    name='email'
                                     id="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -138,7 +143,7 @@ function RegisterScreen() {
                 </div>
             </div>
             }
-        </div>
+        </Layout>
     )
 }
 

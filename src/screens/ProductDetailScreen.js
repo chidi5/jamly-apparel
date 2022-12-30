@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails } from '../actions/product';
 import { STORE_SUCCESS } from '../actions/types';
 import Load from '../components/Load';
+import Layout from '../components/Layout';
 
 function ProductDetailScreen() {
 
@@ -66,7 +67,10 @@ function ProductDetailScreen() {
     }
 
     return (
-        <>
+        <Layout
+            showFooter={true}
+            showHeader={true} 
+        >
         {loading ? <Load />
         :
         product &&
@@ -261,7 +265,7 @@ function ProductDetailScreen() {
                 </section>
             </div>
         }
-        </>
+        </Layout>
     )
 }
 

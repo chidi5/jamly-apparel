@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 
 const products = [
   {
@@ -15,6 +16,27 @@ const products = [
   },
   {
     id: 2,
+    name: 'Medium Stuff Satchel',
+    href: '#',
+    color: 'Blue',
+    price: '$32.00',
+    quantity: 1,
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageAlt:
+      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+  },
+  {
+    id: 3,
+    name: 'Throwback Hip Bag',
+    href: '#',
+    color: 'Salmon',
+    price: '$90.00',
+    quantity: 1,
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+  },
+  {
+    id: 4,
     name: 'Medium Stuff Satchel',
     href: '#',
     color: 'Blue',
@@ -127,12 +149,12 @@ export default function Cart({
                                             </div>
                                             <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                             <div className="mt-6">
-                                                <a
-                                                href="/"
+                                                <Link
+                                                to="/checkout"
                                                 className="flex w-full items-center justify-center px-4 py-3 my-5 text-sm font-light border border-transparent bg-gray-900 ring-1 ring-gray-900 text-white hover:bg-gray-800"
                                                 >
                                                 Checkout
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                                                 <p>

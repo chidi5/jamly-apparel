@@ -13,6 +13,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Loader from '../components/Loader';
 import Product from '../components/Product';
 import Load from '../components/Load';
+import Layout from '../components/Layout';
 
 function HomeScreen() {
 
@@ -22,7 +23,10 @@ function HomeScreen() {
   const { error, loading, store } = storeFront
 
   return (
-    <>
+    <Layout
+      showFooter={true}
+      showHeader={true} 
+    >
     {loading ? <Load />
       : store &&
       <>
@@ -122,7 +126,7 @@ function HomeScreen() {
         </ProductContainer>
       </>
     }
-    </>
+    </Layout>
   )
 }
 

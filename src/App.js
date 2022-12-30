@@ -9,22 +9,22 @@ import RegisterScreen from './screens/RegisterScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
 import ProductScreen from './screens/ProductScreen';
+import CheckoutScreen from './screens/CheckoutScreen';
 
 function App() {
 
   return (
     <Router>
       <div className="App">
-        <Header />
         <Routes>
           <Route path="/" element={<HomeScreen />} exact/>
           <Route path='/:id' element={<ProductListScreen />} />
           <Route path='/product/all' element={<ProductScreen />} exact/>
           <Route path='/product/:id' element={<ProductDetailScreen />} />
+          <Route path='/checkout' element={<CheckoutScreen />} exact />
           <Route path="login" element={<LoginScreen />} />
           <Route path='register' element={<RegisterScreen />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );

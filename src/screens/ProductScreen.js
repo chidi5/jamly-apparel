@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { listProducts } from '../actions/product';
+import Layout from '../components/Layout';
 import Load from '../components/Load';
 import Product from '../components/Product';
-import white from '../style/static/images/white.jpg';
+//import white from '../style/static/images/white.jpg';
 import ProductContainer from './ProductContainer'
 import ScreenContainer from './ScreenContainer';
 
@@ -27,7 +28,10 @@ function ProductScreen() {
     }, [dispatch])
 
     return (
-        <>
+        <Layout
+            showFooter={true}
+            showHeader={true} 
+        >
             {loading || storeLoading  ? <Load />
             :
             products &&
@@ -45,7 +49,7 @@ function ProductScreen() {
                 </ProductContainer>
             </ScreenContainer>
             }
-        </>
+        </Layout>
     )
 }
 
