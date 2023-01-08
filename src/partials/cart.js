@@ -60,6 +60,8 @@ export default function Cart({
     id
 }) {
 
+    let variant = variation
+
     const myRef = useRef([]);
 
     const dispatch = useDispatch()
@@ -94,7 +96,7 @@ export default function Cart({
         if(myRef.current[i].current.value < 1) {
             myRef.current[i].current.value = 1
         }
-        dispatch(addToCart(product, Number(myRef.current[i].current.value), variation))
+        dispatch(addToCart(product, Number(myRef.current[i].current.value), variant))
     }
 
     const increment= (i, product) => {
@@ -104,7 +106,7 @@ export default function Cart({
         if(myRef.current[i].current.value > Number(max)) {
             myRef.current[i].current.value = Number(max)
         }
-        dispatch(addToCart(product, Number(myRef.current[i].current.value), variation))
+        dispatch(addToCart(product, Number(myRef.current[i].current.value), variant))
     }
 
     return (
