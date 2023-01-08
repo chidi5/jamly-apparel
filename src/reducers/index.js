@@ -10,6 +10,7 @@ import {
     productListReducer,
     productDetailsReducer
 } from './product'
+import { cartReducer } from './cart'
 
 export default combineReducers({
     userLogin: userLoginReducer,
@@ -19,4 +20,6 @@ export default combineReducers({
     storeFront: storeFrontReducer,
     productList: productListReducer,
     productDetails: productDetailsReducer,
+
+    cart: cartReducer,
 })

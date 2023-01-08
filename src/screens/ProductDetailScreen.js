@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import one from '../style/static/images/1.jpeg';
 import two from '../style/static/images/2.jpeg';
@@ -14,13 +14,16 @@ import { listProductDetails } from '../actions/product';
 import { STORE_SUCCESS } from '../actions/types';
 import Load from '../components/Load';
 import Layout from '../components/Layout';
+import Cart from '../partials/cart';
 
 function ProductDetailScreen() {
 
     //const { id } = useParams();
-    const [selectedOption, setSelectedOption] = useState('42');
+    const [selectedOption, setSelectedOption] = useState('pink');
     const [qty, setQty] = useState(1);
-    const [open, setOpen] = useState(1);
+    const [formData, setFormData] = useState('');
+    const [open, setOpen] = useState(0);
+    const [cartOpen, setCartOpen] = useState(false)
     const [addCart, setAddCart] = useState(false)
 
     const dispatch = useDispatch()
@@ -47,23 +50,31 @@ function ProductDetailScreen() {
         e.currentTarget.classList.toggle('current');
     };
 
-    const onValueChange = e => {
+    const onValueChange = (name, value) => e => {
         setSelectedOption(e.target.value)
-        console.log(e.target.value)
+        const updateFormData = {
+            ...formData,
+            [name]: value,
+        }
+        setFormData(updateFormData)
+        console.log(name)
+        console.log(value)
+    }
+
+    const handleSubmit = e => {
+        console.log(formData)
     }
 
     const decrement = e => {
         let count = qty
         --count
-        if (count === 0){
-            setQty(1)
-        }else {
-            setQty(count)
-        }
+        count === 0 ? setQty(1) : setQty(count)
     }
 
-    const increment = e => {
-        setQty(qty + 1)
+    const increment = (i) => e => {
+        let count = qty
+        ++count
+        count >= i ? setQty(i) : setQty(count)
     }
 
     return (
@@ -89,57 +100,29 @@ function ProductDetailScreen() {
                         <div className="text-base font-thin">
                             <span className="price" data-product-price="">&#8358;{product.price}</span>
                         </div>
-                        <div className="flex flex-wrap items-center">
-                            <p className="flex items-center w-full mt-0 mb-1 pt-2 pb-1 text-sm text-gray-600 font-thin">Colour: 
-                                <span className='text-gray-900'>&nbsp;Black</span>
-                            </p>
-                            <Link to='#' className={`rounded-full`} onClick={handleClick}>
-                                <span className='bg-teal-800 rounded-full block w-6 h-6'></span>
-                            </Link>
-                            <Link to='#' className={`rounded-full ml-2`} onClick={handleClick}>
-                                <span className='bg-brown-800 rounded-full block w-6 h-6'></span>
-                            </Link>
-                        </div>
                         <div className="flex flex-wrap items-center radio-toolbar">
-                            <p className="flex items-center w-full mt-0 mb-1 pt-3 pb-1 text-sm text-gray-600 font-thin">Size: 
-                                <span className='text-gray-900'>&nbsp;{selectedOption}</span>
-                            </p>
-                            <label className="unavailable">
-                                <input type="radio" name="size" value="38"
-                                checked={selectedOption === '38'}
-                                onChange={onValueChange} />
-                                <span>38</span>
-                            </label>
-                            <label className="unavailable">
-                                <input type="radio" name="size" value="41"
-                                checked={selectedOption === '41'}
-                                onChange={onValueChange} />
-                                <span>41</span>
-                            </label>
-                            <label className="">
-                                <input type="radio" name="size" value="42"
-                                checked={selectedOption === '42'}
-                                onChange={onValueChange} />
-                                <span>42</span>
-                            </label>
-                            <label className="unavailable">
-                                <input type="radio" name="size" value="43"
-                                checked={selectedOption === '43'}
-                                onChange={onValueChange} />
-                                <span>43</span>
-                            </label>
-                            <label className="">
-                                <input type="radio" name="size" value="44"
-                                checked={selectedOption === '44'}
-                                onChange={onValueChange} />
-                                <span>44</span>
-                            </label>
-                            <label className="">
-                                <input type="radio" name="size" value="46"
-                                checked={selectedOption === '46'}
-                                onChange={(onValueChange)} />
-                                <span>46</span>
-                            </label>
+                            {product.product_options.map((v) => {
+                                const name = v.name
+                                return (
+                                    <>
+                                    <p className="flex items-center w-full mt-0 mb-1 pt-3 pb-1 text-sm text-gray-600 font-thin">{name}: 
+                                    <span className='text-gray-900'>&nbsp;{selectedOption}</span>
+                                    </p>
+                                    {v.product_options_values.map((item) => 
+                                    <label>
+                                        <input 
+                                        key={item._id}
+                                        type="radio" 
+                                        name={name}
+                                        value={item.value}
+                                        checked={selectedOption === item.value}
+                                        onChange={onValueChange(name, item.value)} />
+                                        <span>{item.value}</span>
+                                    </label>
+                                    )}
+                                    </>
+                                )
+                            })}
                         </div>
                         <div className="custom-number-input w-32">
                             <label htmlFor="custom-input-number" className="w-full mt-0 mb-1 pt-4 pb-1 text-sm text-gray-600 font-thin">Quantity
@@ -153,18 +136,20 @@ function ProductDetailScreen() {
                                     className="flex items-center justify-center text-gray-900 outline-none focus:outline-none text-center w-full bg-transparent font-thin text-xs"
                                     name="custom-input-number"
                                     value={qty}
+                                    max={product.num_products}
                                     onChange={(e) => setQty(e.target.value)}
                                 />
-                                <button data-action="increment" onClick={increment} className="bg-gray-100 text-gray-800 hover:bg-gray-200 h-full w-20 cursor-pointer focus:outline-none">
+                                <button data-action="increment" onClick={increment(product.num_products)} className="bg-gray-100 text-gray-800 hover:bg-gray-200 h-full w-20 cursor-pointer focus:outline-none">
                                     <span className="text-lg text-center m-auto font-bold">&#xff0b;</span>
                                 </button>
                             </div>
                         </div>
                         <button
                             className="flex w-full items-center justify-center px-4 py-3 my-5 text-xs font-light border border-transparent bg-gray-900 ring-1 ring-gray-900 text-white hover:bg-gray-800"
-                            onClick={() => {console.log(selectedOption)}}
+                            onClick={() => {setCartOpen(!cartOpen); setAddCart(!addCart)}}
                         >
                             <span>Add To Cart</span>
+                            <Cart open={cartOpen} setOpen={setCartOpen} addCart={addCart} qty={qty} variation={formData} id={id} />
                         </button>
                         <>
                             <Accordion open={open === 1}>

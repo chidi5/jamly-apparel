@@ -8,18 +8,19 @@ import {
 } from './types'
 
 
-export const addToCart = (id, qty) => async (dispatch, getState) => {
-    const { data } = await axios.get(`https://jamly2021.herokuapp.com/api/productdetails/${id}`)
+export const addToCart = (id, qty, variation) => async (dispatch, getState) => {
+    const { data } = await axios.get(`https://getjamly.herokuapp.com/api/productdetails/${id}`)
 
     dispatch({
         type: CART_ADD_ITEM,
         payload: {
             product: data._id,
             name: data.name,
-            image: data.image,
+            image: data.image1,
             price: data.price,
             num_products: data.num_products,
-            qty
+            qty,
+            variation: variation
         }
     })
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))

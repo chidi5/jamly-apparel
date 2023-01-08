@@ -69,58 +69,21 @@ function HomeScreen() {
 
           <section className='overflow-hidden'>
               <div className='scroll_container flex my-8 gap-x-2 overflow-x-auto overflow-y-hidden snap-x'>
+                {store.store_collections.map((collection) => (
                 <div className='flex flex-col relative snap-start'>
-                  <Link to='/product/outpost-canvas-jacket-tobacco'>
+                  <Link to={`/product/collection/${collection._id}`}>
                     <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
-                      <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={summer} alt='product'></img>
+                      <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={collection.image} alt={collection.name}></img>
                     </div>
                     <h3 className='flex text-base text-left font-semibold my-2'>
-                      Summer Collection&nbsp;
+                      {collection.name}&nbsp;
                       <span className='flex justify-center items-center'>
                         <ArrowRightIcon className='w-5 h-5 pt-1' />
                       </span>
                     </h3>
                   </Link>
                 </div>
-                <div className='flex flex-col relative snap-start'>
-                  <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
-                      <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={one} alt='product'></img>
-                    </div>
-                    <h3 className='flex text-base text-left font-semibold my-2'>
-                      Sports Collection&nbsp;
-                      <span className='flex justify-center items-center'>
-                        <ArrowRightIcon className='w-5 h-5 pt-1' />
-                      </span>
-                    </h3>
-                  </Link>
-                </div>
-                <div className='flex flex-col relative snap-start'>
-                  <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
-                      <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={two} alt='product'></img>
-                    </div>
-                    <h3 className='flex text-base text-left font-semibold my-2'>
-                      Mens Collection&nbsp;
-                      <span className='flex justify-center items-center'>
-                        <ArrowRightIcon className='w-5 h-5 pt-1' />
-                      </span>
-                    </h3>
-                  </Link>
-                </div>
-                <div className='flex flex-col relative snap-start'>
-                  <Link to='/product/outpost-canvas-jacket-tobacco'>
-                    <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
-                      <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={three} alt='product'></img>
-                    </div>
-                    <h3 className='flex text-base text-left font-semibold my-2'>
-                      Womens Collection&nbsp;
-                      <span className='flex justify-center items-center'>
-                        <ArrowRightIcon className='w-5 h-5 pt-1' />
-                      </span>
-                    </h3>
-                  </Link>
-                </div>
+                ))}
               </div>
           </section>
         </ProductContainer>

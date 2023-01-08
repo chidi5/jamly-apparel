@@ -18,6 +18,7 @@ import Avater from '../partials/avater'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/user'
 import { loadStore } from '../actions/storefront'
+import { STORE_FAIL } from '../actions/types';
 
 function Header() {
     const [open, setOpen] = useState(false);
@@ -30,20 +31,24 @@ function Header() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-    const storeFront = useSelector(state => state.storeFront)
-    const { store } = storeFront
+    //const storeFront = useSelector(state => state.storeFront)
+    //const { store } = storeFront
 
     const logoutHandler = () => {
         dispatch(logout())
     }
 
     useEffect(() => {
-        dispatch(loadStore(domain))
         // if store not found
+        //if({ type: STORE_FAIL }) {
+            //navigate('/checkout')
+            //console.log("haha")
+        //}
+        dispatch(loadStore(domain))
         //if (store === undefined) {
             //navigate('/checkout')
         //}
-    }, [dispatch])
+    }, [dispatch, navigate])
 
     return (
         <>
