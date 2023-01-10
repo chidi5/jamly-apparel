@@ -71,7 +71,7 @@ function HomeScreen() {
               <div className='scroll_container flex my-8 gap-x-2 overflow-x-auto overflow-y-hidden snap-x'>
                 {store.store_collections.map((collection) => (
                 <div className='flex flex-col relative snap-start'>
-                  <Link to={`/product/collection/${collection._id}`}>
+                  <Link to={`/product/collection/${collection._id}?name=${collection.name}`}>
                     <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
                       <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={collection.image} alt={collection.name}></img>
                     </div>

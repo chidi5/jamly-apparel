@@ -31,8 +31,11 @@ function Header() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-    //const storeFront = useSelector(state => state.storeFront)
-    //const { store } = storeFront
+    const cart = useSelector(state => state.cart)
+    const { cartItems } = cart
+
+    const storeFront = useSelector(state => state.storeFront)
+    const { loading, store } = storeFront
 
     const logoutHandler = () => {
         dispatch(logout())
@@ -56,12 +59,12 @@ function Header() {
             <div className="mx-auto max-w-[84rem] px-4 sm:px-6">
                 <div className="flex items-center justify-between border-0 py-1">
                     <Popover.Group as="nav" className="hidden space-x-8 lg:flex lg:justify-start">
-                        <a href="/" className="text-sm font-thin text-gray-500 hover:text-gray-900">
-                            Men
-                        </a>
-                        <a href="#" className="text-sm font-thin text-gray-500 hover:text-gray-900">
-                            Women
-                        </a>
+                        <div className="text-sm font-thin text-gray-500">
+                        </div>
+                        <div className="text-sm font-thin text-gray-500">
+                        </div>
+                        <div className="text-sm font-thin text-gray-500">
+                        </div>
                     </Popover.Group>
                     
                     <div className="-my-2 -mr-2 lg:hidden">
@@ -107,7 +110,7 @@ function Header() {
                             className="whitespace-nowrap text-sm font-thin text-gray-500 hover:text-gray-900"
                             onClick={() => setOpen(!open)}
                         >
-                            Cart (0)
+                            Cart ({cartItems.length})
                         </button>
                         <Cart open={open} setOpen={setOpen} />
                     </div>
@@ -173,24 +176,15 @@ function Header() {
                                         </Disclosure.Button>
                                         <Disclosure.Panel className="px-4 pt-4 pb-2 text-gray-800 bg-gray-50">
                                             <nav className="grid gap-y-8">
-                                                <Link
-                                                    to='/'
-                                                    className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
-                                                    >
-                                                    <span className="ml-3 text-base font-medium text-gray-900">Summer Collection</span>
-                                                </Link>
-                                                <Link
-                                                    to='/'
-                                                    className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
-                                                    >
-                                                    <span className="ml-3 text-base font-medium text-gray-900">Sports Collection</span>
-                                                </Link>
-                                                <Link
-                                                    to='/'
-                                                    className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100"
-                                                    >
-                                                    <span className="ml-3 text-base font-medium text-gray-900">Lifestyle Collection</span>
-                                                </Link>
+                                                {store && 
+                                                    <>
+                                                    {store.store_collections.map((collection) => 
+                                                        <Link to={`/product/collection/${collection._id}?name=${collection.name}`} className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100">
+                                                            <span className="ml-3 text-base font-medium text-gray-900">{collection.name}</span>
+                                                        </Link>
+                                                    )}
+                                                    </>
+                                                }
                                             </nav>
                                         </Disclosure.Panel>
                                         </>
@@ -289,18 +283,15 @@ function Header() {
                         <Link to="/product/all" className="text-sm font-thin text-gray-500 hover:text-gray-900">
                             Shop Now
                         </Link>
-                        <Link to="/t-shirt" className="text-sm font-thin text-gray-500 hover:text-gray-900">
-                            T-shirt
-                        </Link>
-                        <Link to="/boot" className="text-sm font-thin text-gray-500 hover:text-gray-900">
-                            Boots
-                        </Link>
-                        <Link to="/sandal" className="text-sm font-thin text-gray-500 hover:text-gray-900">
-                            Sandals
-                        </Link>
-                        <Link to="/shoe" className="text-sm font-thin text-gray-500 hover:text-gray-900">
-                            Shoes
-                        </Link>
+                        {store && 
+                            <>
+                            {store.store_categories.map((cat) => 
+                                <Link to={`/${cat._id}?name=${cat.name}`} className="text-sm font-thin text-gray-500 hover:text-gray-900">
+                                    {cat.name}
+                                </Link>
+                            )}
+                            </>
+                        }
                         <Link to="/sales" className="text-sm font-thin text-red-500 hover:text-red-900">
                             Sales
                         </Link>

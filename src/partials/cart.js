@@ -188,9 +188,9 @@ export default function Cart({
                                                                     )}
                                                                 </div>
                                                                 <div className="flex flex-1 items-end justify-between text-xs">
-                                                                    <div className='inline-flex items-center'>
-                                                                    <p className="text-gray-500 inline-flex">Qty</p>
-                                                                    <div className="flex-row inline-flex h-10 w-1/2 relative mt-1 ml-2 border border-gray-900">
+                                                                    <div className='inline-block items-center m-0 p-0 w-40'>
+                                                                    <p className="text-gray-500 inline-block">Qty</p>
+                                                                    <div className="inline-flex flex-row h-8 w-1/2 mt-1 ml-2 border border-gray-900">
                                                                         <button data-action="decrement" onClick={() => decrement(i, item.product)} className="bg-gray-100 text-gray-800 hover:bg-gray-200 h-full w-20 cursor-pointer outline-none focus:outline-none">
                                                                             <span className="text-lg m-auto font-bold">&mdash;</span>
                                                                         </button>

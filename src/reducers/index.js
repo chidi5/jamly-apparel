@@ -8,7 +8,8 @@ import {
 import { storeFrontReducer } from './storefront'
 import { 
     productListReducer,
-    productDetailsReducer
+    productDetailsReducer,
+    categoryProductListReducer
 } from './product'
 import { cartReducer } from './cart'
 
@@ -20,6 +21,7 @@ export default combineReducers({
     storeFront: storeFrontReducer,
     productList: productListReducer,
     productDetails: productDetailsReducer,
+    categoryProduct: categoryProductListReducer,
 
     cart: cartReducer,
 })

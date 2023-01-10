@@ -12,9 +12,9 @@ import {
     CATEGORY_LIST_SUCCESS,
     CATEGORY_LIST_FAIL,
 
-    CATEGORY_DETAILS_REQUEST,
-    CATEGORY_DETAILS_SUCCESS,
-    CATEGORY_DETAILS_FAIL,
+    CATEGORY_PRODUCTS_REQUEST,
+    CATEGORY_PRODUCTS_SUCCESS,
+    CATEGORY_PRODUCTS_FAIL,
 
 } from './types'
 
@@ -62,11 +62,11 @@ export const listProductDetails = (id) => async (dispatch) => {
 }
 
 
-export const listCategory = (id) => async (dispatch) => {
+export const listCategory = (store) => async (dispatch) => {
     try {
         dispatch({ type: CATEGORY_LIST_REQUEST })
 
-        const { data } = await axios.get(`https://getjamly.herokuapp.com/api/getStoreCategories/${id}`)
+        const { data } = await axios.get(`https://getjamly.herokuapp.com/api/getStoreCategories/${store}`)
 
         dispatch({
             type: CATEGORY_LIST_SUCCESS,
@@ -83,20 +83,41 @@ export const listCategory = (id) => async (dispatch) => {
     }
 }
 
-export const listCategoryDetails = (store, id) => async (dispatch) => {
+export const listCategoryProducts = (store, id) => async (dispatch) => {
     try {
-        dispatch({ type: CATEGORY_DETAILS_REQUEST })
+        dispatch({ type: CATEGORY_PRODUCTS_REQUEST })
 
         const { data } = await axios.get(`https://getjamly.herokuapp.com/api/getcategoryproducts/${store}/${id}`)
 
         dispatch({
-            type: CATEGORY_DETAILS_SUCCESS,
+            type: CATEGORY_PRODUCTS_SUCCESS,
             payload: data
         })
 
     } catch (error) {
         dispatch({
-            type: CATEGORY_DETAILS_FAIL,
+            type: CATEGORY_PRODUCTS_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+export const listCollectionProducts = (store, collection_id) => async (dispatch) => {
+    try {
+        dispatch({ type: PRODUCT_LIST_REQUEST })
+
+        const { data } = await axios.get(`https://getjamly.herokuapp.com/api/storecollectionproducts/${store}/${collection_id}`)
+
+        dispatch({
+            type: PRODUCT_LIST_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_LIST_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,

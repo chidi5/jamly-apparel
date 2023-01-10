@@ -36,9 +36,9 @@ function ProductScreen() {
             :
             products &&
             <ScreenContainer>
-                <div className='relative flex flex-row-reverse items-center justify-between border-t border-b border-gray-300 min-h-[48px] min-w-[80px] my-10'>
-                </div>
                 <ProductContainer>
+                    <div className='relative my-8 flex flex-row-reverse items-center justify-between border-t border-b border-gray-300 min-h-[48px] min-w-[80px]'>
+                    </div>
                     <div className='py-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
                         {products.map(product => (
                             <div key={product._id} className='flex flex-col'>
