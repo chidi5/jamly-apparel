@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { listProducts } from '../actions/product';
 import Layout from '../components/Layout';
 import Load from '../components/Load';
 import Product from '../components/Product';
-//import white from '../style/static/images/white.jpg';
 import ProductContainer from './ProductContainer'
 import ScreenContainer from './ScreenContainer';
 
 function ProductScreen() {
 
     const dispatch = useDispatch()
-    const navigate = useNavigate()
 
     const productList = useSelector(state => state.productList)
-    const { loading, error, products} = productList
+    const { loading, products} = productList
 
     const storeFront = useSelector(state => state.storeFront)
     const { loading:storeLoading, store } = storeFront
@@ -25,14 +22,14 @@ function ProductScreen() {
             dispatch(listProducts(store.store_data._id))
         }
 
-    }, [dispatch])
+    }, [dispatch, store])
 
     return (
         <Layout
             showFooter={true}
             showHeader={true} 
         >
-            {loading || storeLoading  ? <Load />
+            {storeLoading || loading  ? <Load />
             :
             products &&
             <ScreenContainer>

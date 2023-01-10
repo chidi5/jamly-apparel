@@ -28,7 +28,7 @@ function ProductListScreen() {
             dispatch(listCategoryProducts(store.store_data._id, id))
         }
 
-    }, [dispatch])
+    }, [dispatch, store, id])
 
     return (
         <Layout

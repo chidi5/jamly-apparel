@@ -18,7 +18,7 @@ import Avater from '../partials/avater'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/user'
 import { loadStore } from '../actions/storefront'
-import { STORE_FAIL } from '../actions/types';
+//import { STORE_FAIL } from '../actions/types';
 
 function Header() {
     const [open, setOpen] = useState(false);
@@ -35,7 +35,7 @@ function Header() {
     const { cartItems } = cart
 
     const storeFront = useSelector(state => state.storeFront)
-    const { loading, store } = storeFront
+    const { store } = storeFront
 
     const logoutHandler = () => {
         dispatch(logout())
@@ -48,9 +48,6 @@ function Header() {
             //console.log("haha")
         //}
         dispatch(loadStore(domain))
-        //if (store === undefined) {
-            //navigate('/checkout')
-        //}
     }, [dispatch, navigate])
 
     return (
@@ -183,7 +180,7 @@ function Header() {
                                                 {store && 
                                                     <>
                                                     {store.store_collections.map((collection) => 
-                                                        <Link to={`/product/collection/${collection._id}?name=${collection.name}`} className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100">
+                                                        <Link key={collection._id} to={`/product/collection/${collection._id}?name=${collection.name}`} className="-m-3 flex items-center rounded-none p-3 hover:bg-gray-100">
                                                             <span className="ml-3 text-base font-medium text-gray-900">{collection.name}</span>
                                                         </Link>
                                                     )}
@@ -290,7 +287,7 @@ function Header() {
                         {store && 
                             <>
                             {store.store_categories.map((cat) => 
-                                <Link to={`/${cat._id}?name=${cat.name}`} className="text-sm font-thin text-gray-500 hover:text-gray-900">
+                                <Link key={cat._id} to={`/${cat._id}?name=${cat.name}`} className="text-sm font-thin text-gray-500 hover:text-gray-900">
                                     {cat.name}
                                 </Link>
                             )}

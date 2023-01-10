@@ -18,7 +18,7 @@ function CollectionProductScreen() {
     const backUrl = isBackUrl ? isBackUrl : null
 
     const productList = useSelector(state => state.productList)
-    const { loading, error, products} = productList
+    const { loading, products} = productList
 
     const storeFront = useSelector(state => state.storeFront)
     const { loading:storeLoading, store } = storeFront
@@ -29,7 +29,7 @@ function CollectionProductScreen() {
             dispatch(listCollectionProducts(store.store_data._id, id))
         }
 
-    }, [dispatch])
+    }, [dispatch, store, id])
 
   return (
     <Layout
