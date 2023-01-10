@@ -92,6 +92,7 @@ function Header() {
                         >
                             <span className="sr-only">Cart menu</span>
                             <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                            <div className='notification-dot'></div>
                         </button>
                     </div>
 
