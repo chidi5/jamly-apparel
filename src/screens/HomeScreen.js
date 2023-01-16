@@ -2,11 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import header from '../style/static/images/new.jpg';
 import head from '../style/static/images/winter.jpg';
-import one from '../style/static/images/1.jpeg';
-import two from '../style/static/images/2.jpeg';
-import three from '../style/static/images/3.jpeg';
-import four from '../style/static/images/4.jpeg';
-import summer from '../style/static/images/sum.jpg';
 import ProductContainer from './ProductContainer'
 import { useDispatch, useSelector } from 'react-redux';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
@@ -70,7 +65,7 @@ function HomeScreen() {
           <section className='overflow-hidden'>
               <div className='scroll_container flex my-8 gap-x-2 overflow-x-auto overflow-y-hidden snap-x'>
                 {store.store_collections.map((collection) => (
-                <div className='flex flex-col relative snap-start'>
+                <div key={collection._id} className='flex flex-col relative snap-start'>
                   <Link to={`/product/collection/${collection._id}?name=${collection.name}`}>
                     <div className='group relative overflow-hidden lg:w-[269px] lg:h-[269px] md:w-[700px] md:h-[700px] w-[340px] h-[340px]'>
                       <img className='absolute w-full min-h-full top-1/2 left-0 -translate-y-1/2 object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out' src={collection.image} alt={collection.name}></img>

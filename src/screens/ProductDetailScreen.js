@@ -33,7 +33,7 @@ function ProductDetailScreen() {
     const { loading, product } = productDetails
 
     useEffect(() => {
-
+        window.scrollTo({ top: 0, left: 0 });
         if({ type: STORE_SUCCESS }) {
             dispatch(listProductDetails(id))
         }
